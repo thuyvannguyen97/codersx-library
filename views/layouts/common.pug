@@ -1,0 +1,45 @@
+html
+  head
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    link(rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png")
+    link(rel="manifest" href="/site.webmanifest")
+    link(rel='stylesheet' href='/custom.css')
+  body
+    nav(class="navbar navbar-expand-lg navbar-light", style="background-color: #011936;")
+      ul(class="nav d-flex align-items-center mr-auto")
+        li(class="nav-item")
+          a(class="nav-link text-light pl-0", href="/")
+            img(src='https://cdn.glitch.com/97e88c04-c698-41e8-9769-ecccdb440ae1%2Ffavicon.ico?v=1597337796421')
+        li(class="nav-item")
+          a(class="nav-link text-light font-weight-bold", href="/books") Books
+        li(class="nav-item")
+          a(class="nav-link text-light font-weight-bold", href='/users') Users
+        li(class="nav-item")
+          a(class="nav-link text-light font-weight-bold", href='/transactions') Transactions  
+          
+      .d-flex.align-items-center
+        a.cart.text-light(title="Cart", href='/cart')
+          svg.bi.bi-cart2(width='2em', height='1.5em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
+            path(fill-rule='evenodd', d='M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z')
+          span.ml-1= countCart? countCart : 0
+        if user
+          p.text-light.font-weight-bold.mr-2.pt-3= user.name
+          
+        .dropdown
+          a.text-light(href="/users/profile")
+            svg.bi.bi-person-circle(width='2em', height='1.5em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
+              path(d='M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z')
+              path(fill-rule='evenodd', d='M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z')
+              path(fill-rule='evenodd', d='M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z')
+          a#dropdownMenuLink.dropdown-toggle.dropdown-toggle-split.text-light(href='/auth/login', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+          .dropdown-menu
+            a.dropdown-item(href='#') Action
+            a.dropdown-item(href='#') Another action
+            .dropdown-divider
+            a.dropdown-item(href='#') Something else here
+            
+    div(class='container-fluid')     
+      block content
+      
